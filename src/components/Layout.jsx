@@ -1,14 +1,18 @@
 import Modal from './Modal'
 import {useGlobalContext} from '../context'
+import People from './People'
 
 const Layout = () => {
   const {openModal} = useGlobalContext()
 
   return (
     <div>
-      <button onClick={openModal} className="btn">
-        show modal
-      </button>
+      <div className="add-person">
+        <button onClick={openModal} className="btn">
+          add new
+        </button>
+      </div>
+      <People />
       <Modal />
     </div>
   )

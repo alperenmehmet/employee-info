@@ -9,7 +9,30 @@ const Modal = () => {
       }`}
     >
       <div className="modal-container">
-        <h3>modal content</h3>
+        <div>
+          <form action="">
+            <div>
+              <label htmlFor="">first name:</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label htmlFor="">last name:</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label htmlFor="">occupation:</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label htmlFor="">country:</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label htmlFor="">city:</label>
+              <input type="text" />
+            </div>
+          </form>
+        </div>
         <button className="close-modal-btn" onClick={closeModal}>
           <FaTimes></FaTimes>
         </button>

@@ -1,10 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react'
+import {data} from './data'
 
 const AppContext = React.createContext()
 
 const AppProvider = ({children}) => {
   const [countries, setCountries] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [people, setPeople] = useState(data)
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -13,7 +15,6 @@ const AppProvider = ({children}) => {
   const closeModal = () => {
     setIsModalOpen(false)
   }
-
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
       .then((res) => res.json())
@@ -32,7 +33,7 @@ const AppProvider = ({children}) => {
 
   return (
     <AppContext.Provider
-      value={{countries, isModalOpen, openModal, closeModal}}
+      value={{countries, isModalOpen, openModal, closeModal, people}}
     >
       {children}
     </AppContext.Provider>
