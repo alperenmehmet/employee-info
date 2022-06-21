@@ -4,6 +4,15 @@ const AppContext = React.createContext()
 
 const AppProvider = ({children}) => {
   const [countries, setCountries] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -21,9 +30,12 @@ const AppProvider = ({children}) => {
       })
   }, [])
 
-  console.log(countries)
   return (
-    <AppContext.Provider value={{countries}}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{countries, isModalOpen, openModal, closeModal}}
+    >
+      {children}
+    </AppContext.Provider>
   )
 }
 
