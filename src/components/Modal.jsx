@@ -1,5 +1,6 @@
 import {useGlobalContext} from '../context'
 import {FaTimes} from 'react-icons/fa'
+import Dropdown from './Dropdown'
 const Modal = () => {
   const {isModalOpen, closeModal} = useGlobalContext()
   return (
@@ -23,10 +24,7 @@ const Modal = () => {
               <label htmlFor="">occupation:</label>
               <input type="text" />
             </div>
-            <div>
-              <label htmlFor="">country:</label>
-              <input type="text" />
-            </div>
+            <Dropdown />
             <div>
               <label htmlFor="">city:</label>
               <input type="text" />
