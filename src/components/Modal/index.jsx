@@ -4,14 +4,8 @@ import Dropdown from '../Dropdown'
 import {useState} from 'react'
 
 const Modal = () => {
-  const {
-    isModalOpen,
-    closeModal,
-    people,
-    setPeople,
-    setSelectedCountry,
-    selectedCountry,
-  } = useGlobalContext()
+  const {isModalOpen, closeModal, people, setPeople, setSelectedCountry} =
+    useGlobalContext()
   const [person, setPerson] = useState({
     firstName: '',
     lastName: '',
@@ -50,10 +44,9 @@ const Modal = () => {
         avatar: '',
         city: '',
       })
+      closeModal()
     }
   }
-
-  console.log(people)
 
   return (
     <div
@@ -93,8 +86,8 @@ const Modal = () => {
             </div>
             <Dropdown
               name="country"
-              onChange={handleChange}
               value={person.country}
+              handleChange={handleChange}
             />
             <div>
               <label>city:</label>

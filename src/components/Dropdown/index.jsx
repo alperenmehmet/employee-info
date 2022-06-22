@@ -1,6 +1,6 @@
 import {useGlobalContext} from '../../context'
 
-const Dropdown = () => {
+const Dropdown = ({handleChange, value, name}) => {
   const {countries} = useGlobalContext()
 
   const sortByName = (arr) => {
@@ -21,10 +21,14 @@ const Dropdown = () => {
   return (
     <div>
       <label htmlFor="">select country:</label>
-      <select>
+      <select name="country" onChange={handleChange} value={value}>
         <option value="select country">select country</option>
         {sortByName(countries).map((country, index) => {
-          return <option key={index}>{country.name}</option>
+          return (
+            <option key={index} value={country.name}>
+              {country.name}
+            </option>
+          )
         })}
       </select>
     </div>
