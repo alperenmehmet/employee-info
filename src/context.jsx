@@ -7,6 +7,7 @@ const AppProvider = ({children}) => {
   const [countries, setCountries] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [people, setPeople] = useState(data)
+  const [selectedCountry, setSelectedCountry] = useState('')
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -33,7 +34,16 @@ const AppProvider = ({children}) => {
 
   return (
     <AppContext.Provider
-      value={{countries, isModalOpen, openModal, closeModal, people}}
+      value={{
+        countries,
+        isModalOpen,
+        openModal,
+        closeModal,
+        people,
+        setPeople,
+        selectedCountry,
+        setSelectedCountry,
+      }}
     >
       {children}
     </AppContext.Provider>

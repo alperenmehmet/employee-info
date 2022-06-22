@@ -1,9 +1,7 @@
-import {useGlobalContext} from '../context'
-import {useState} from 'react'
+import {useGlobalContext} from '../../context'
 
 const Dropdown = () => {
   const {countries} = useGlobalContext()
-  const [selectedCountry, setSelectedCountry] = useState('')
 
   const sortByName = (arr) => {
     arr.sort((a, b) => {
@@ -20,17 +18,10 @@ const Dropdown = () => {
     return arr
   }
 
-  const handleChange = (e) => {
-    const value = e.target.value
-    if (value !== 'select country') {
-      setSelectedCountry(value)
-    }
-  }
-
   return (
     <div>
       <label htmlFor="">select country:</label>
-      <select onChange={handleChange} value={selectedCountry}>
+      <select>
         <option value="select country">select country</option>
         {sortByName(countries).map((country, index) => {
           return <option key={index}>{country.name}</option>
