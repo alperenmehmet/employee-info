@@ -8,6 +8,14 @@ const AppProvider = ({children}) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [people, setPeople] = useState(data)
   const [selectedCountry, setSelectedCountry] = useState('')
+  const [person, setPerson] = useState({
+    firstName: '',
+    lastName: '',
+    occupation: '',
+    country: '',
+    avatar: '',
+    city: '',
+  })
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -32,6 +40,10 @@ const AppProvider = ({children}) => {
       })
   }, [])
 
+  const deletePerson = (id) => {
+    setPeople(people.filter((person) => person.id !== id))
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -43,6 +55,9 @@ const AppProvider = ({children}) => {
         setPeople,
         selectedCountry,
         setSelectedCountry,
+        deletePerson,
+        person,
+        setPerson,
       }}
     >
       {children}

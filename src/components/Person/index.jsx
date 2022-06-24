@@ -1,6 +1,17 @@
 import {FaMapMarkerAlt, FaRegTrashAlt, FaEdit} from 'react-icons/fa'
+import {useGlobalContext} from '../../context'
 
-const Person = ({firstName, lastName, occupation, country, city, avatar}) => {
+const Person = ({
+  id,
+  firstName,
+  lastName,
+  occupation,
+  country,
+  city,
+  avatar,
+}) => {
+  const {deletePerson} = useGlobalContext()
+
   return (
     <div className="person-card">
       <div className="person-img-container">
@@ -21,7 +32,7 @@ const Person = ({firstName, lastName, occupation, country, city, avatar}) => {
           <FaEdit />
         </a>
         <a className="person-card-buttons-delete">
-          <FaRegTrashAlt />
+          <FaRegTrashAlt onClick={() => deletePerson(id)} />
         </a>
       </div>
     </div>

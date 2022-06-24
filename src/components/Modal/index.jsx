@@ -1,19 +1,17 @@
 import {useGlobalContext} from '../../context'
 import {FaTimes} from 'react-icons/fa'
 import Dropdown from '../Dropdown'
-import {useState} from 'react'
 
 const Modal = () => {
-  const {isModalOpen, closeModal, people, setPeople, setSelectedCountry} =
-    useGlobalContext()
-  const [person, setPerson] = useState({
-    firstName: '',
-    lastName: '',
-    occupation: '',
-    country: '',
-    avatar: '',
-    city: '',
-  })
+  const {
+    isModalOpen,
+    closeModal,
+    people,
+    setPeople,
+    setSelectedCountry,
+    person,
+    setPerson,
+  } = useGlobalContext()
 
   const handleChange = (e) => {
     const name = e.target.name
