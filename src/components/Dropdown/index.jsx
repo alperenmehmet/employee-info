@@ -20,9 +20,10 @@ const Dropdown = ({handleChange, value, name}) => {
 
   return (
     <div>
-      <label htmlFor="">select country:</label>
       <select name="country" onChange={handleChange} value={value}>
-        <option value="select country">select country</option>
+        <option value="select country" className="select-country">
+          SELECT COUNTRY
+        </option>
         {sortByName(countries).map((country, index) => {
           return (
             <option key={index} value={country.name}>

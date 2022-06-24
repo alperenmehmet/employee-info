@@ -58,53 +58,59 @@ const Modal = () => {
         <div>
           <form>
             <div>
-              <label>first name:</label>
               <input
                 type="text"
                 name="firstName"
                 onChange={handleChange}
                 value={person.firstName}
+                placeholder="FIRST NAME"
+                className="input"
               />
             </div>
             <div>
-              <label>last name:</label>
               <input
                 type="text"
                 name="lastName"
                 onChange={handleChange}
                 value={person.lastName}
+                placeholder="LAST NAME"
+                className="input"
               />
             </div>
             <div>
-              <label>occupation:</label>
               <input
                 type="text"
                 name="occupation"
                 onChange={handleChange}
                 value={person.occupation}
+                placeholder="OCCUPATION"
+                className="input"
               />
             </div>
             <Dropdown
               name="country"
               value={person.country}
               handleChange={handleChange}
+              className="input"
             />
             <div>
-              <label>city:</label>
               <input
                 type="text"
                 onChange={handleChange}
                 value={person.city}
                 name="city"
+                placeholder="CITY"
+                className="input"
               />
             </div>
             <div>
-              <label>avatar:</label>
               <input
                 type="text"
                 onChange={handleChange}
                 value={person.avatar}
                 name="avatar"
+                placeholder="AVATAR URL"
+                className="input"
               />
             </div>
           </form>
@@ -113,7 +119,7 @@ const Modal = () => {
           <FaTimes></FaTimes>
         </button>
         <button type="submit" className="btn" onClick={handleClick}>
-          Add
+          Add Person
         </button>
       </div>
     </div>

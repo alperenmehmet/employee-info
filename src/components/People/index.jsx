@@ -5,7 +5,7 @@ const People = () => {
   const {people} = useGlobalContext()
 
   return (
-    <div className="people-container">
+    <div className="people-container section-center">
       {people?.map((person) => {
         return <Person key={person.id} {...person} />
       })}

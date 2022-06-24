@@ -1,3 +1,5 @@
+import {FaMapMarkerAlt, FaRegTrashAlt, FaEdit} from 'react-icons/fa'
+
 const Person = ({firstName, lastName, occupation, country, city, avatar}) => {
   return (
     <div className="person-card">
@@ -5,11 +7,22 @@ const Person = ({firstName, lastName, occupation, country, city, avatar}) => {
         <img src={avatar} alt="avatar" />
       </div>
       <div className="person-info">
-        <p>name:{firstName}</p>
-        <p>last name:{lastName}</p>
-        <p>occupation:{occupation}</p>
-        <p>country:{country}</p>
-        <p>city:{city}</p>
+        <p className="person-info-name">
+          {firstName} {lastName}
+        </p>
+        <p className="person-info-occupation">{occupation}</p>
+        <p className="person-info-location">
+          <FaMapMarkerAlt className="person-info-location-icon" />
+          {city} - {country}
+        </p>
+      </div>
+      <div className="person-card-buttons">
+        <a className="person-card-buttons-edit">
+          <FaEdit />
+        </a>
+        <a className="person-card-buttons-delete">
+          <FaRegTrashAlt />
+        </a>
       </div>
     </div>
   )

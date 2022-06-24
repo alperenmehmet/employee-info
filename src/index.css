@@ -50,6 +50,12 @@ img{
   height: 20%;
 }
 
+.section-center{
+  margin: 0 auto;
+  max-width: 1170px;
+  width: 90vw;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -72,7 +78,7 @@ img{
   background: var(--clr-white);
   border-radius: var(--radius);
   width: 90vw;
-  height: 60vh;
+  height: 50vh;
   max-width: var(--fixed-width);
   text-align: center;
   display: grid;
@@ -89,6 +95,92 @@ img{
   color: var(--clr-red-dark);
   cursor: pointer;
 }
+
+.person-card{
+  box-shadow: var(--light-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.person-img-container img{
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+}
+
+.person-info{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.person-info p{
+  margin: 1rem 0;
+}
+
+.person-info-name{
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.person-info-occupation{
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.person-info-location-icon{
+  margin-right: 5px;
+}
+
+.person-info-location{
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.people-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.add-person-btn-container{
+  text-align: right;
+  margin-top: 4rem;
+}
+
+.person-card-buttons{
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.person-card-buttons-edit{
+  margin-right: 2rem;
+  color: blue;
+}
+
+.person-card-buttons-delete{
+  color: red;
+}
+
+.input{
+  padding: 0.4rem;
+  margin: 0.5rem;
+  width: 100%;
+}
+
+select{
+  padding: 0.4rem;
+  margin: 0.5rem;
+  width: 100%;
+}
+
 
 
 
