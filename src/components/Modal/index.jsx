@@ -1,6 +1,7 @@
 import {useGlobalContext} from '../../context'
 import {FaTimes} from 'react-icons/fa'
 import Dropdown from '../Dropdown'
+import {useEffect} from 'react'
 
 const Modal = () => {
   const {
@@ -85,7 +86,7 @@ const Modal = () => {
     }
     closeModal()
   }
-  console.log(isEditing)
+
   return (
     <div
       className={`${

@@ -53,6 +53,10 @@ const AppProvider = ({children}) => {
     setIsEditing(true)
   }
 
+  useEffect(() => {
+    localStorage.setItem('people', JSON.stringify(people))
+  }, [])
+
   return (
     <AppContext.Provider
       value={{
