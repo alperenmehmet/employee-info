@@ -10,7 +10,7 @@ const Person = ({
   city,
   avatar,
 }) => {
-  const {deletePerson} = useGlobalContext()
+  const {deletePerson, editPerson, openModal} = useGlobalContext()
 
   return (
     <div className="person-card">
@@ -29,7 +29,12 @@ const Person = ({
       </div>
       <div className="person-card-buttons">
         <a className="person-card-buttons-edit">
-          <FaEdit />
+          <FaEdit
+            onClick={() => {
+              editPerson(id)
+              openModal()
+            }}
+          />
         </a>
         <a className="person-card-buttons-delete">
           <FaRegTrashAlt onClick={() => deletePerson(id)} />

@@ -16,6 +16,8 @@ const AppProvider = ({children}) => {
     avatar: '',
     city: '',
   })
+  const [editId, setEditId] = useState(null)
+  const [isEditing, setIsEditing] = useState(false)
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -44,6 +46,13 @@ const AppProvider = ({children}) => {
     setPeople(people.filter((person) => person.id !== id))
   }
 
+  const editPerson = (id) => {
+    const editingPerson = people.find((person) => person.id === id)
+    setPerson(editingPerson)
+    setEditId(id)
+    setIsEditing(true)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -58,6 +67,11 @@ const AppProvider = ({children}) => {
         deletePerson,
         person,
         setPerson,
+        editId,
+        setEditId,
+        isEditing,
+        setIsEditing,
+        editPerson,
       }}
     >
       {children}

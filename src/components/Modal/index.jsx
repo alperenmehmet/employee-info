@@ -11,6 +11,11 @@ const Modal = () => {
     setSelectedCountry,
     person,
     setPerson,
+    isEditing,
+    setIsEditing,
+    editId,
+    setEditId,
+    openModal,
   } = useGlobalContext()
 
   const handleChange = (e) => {
@@ -24,6 +29,40 @@ const Modal = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
+    if (
+      person.firstName &&
+      person.lastName &&
+      person.occupation &&
+      person.city &&
+      person.avatar &&
+      person.country &&
+      isEditing
+    ) {
+      openModal()
+      setPeople(
+        people.map((item) => {
+          if (item.id === editId) {
+            return {
+              ...person,
+            }
+          }
+          return item
+        })
+      )
+      setEditId('')
+      setPerson({
+        firstName: '',
+        lastName: '',
+        occupation: '',
+        country: '',
+        avatar: '',
+        city: '',
+      })
+      setIsEditing(false)
+      closeModal()
+      console.log('hello')
+    }
+
     if (
       person.firstName &&
       person.lastName &&
@@ -44,8 +83,9 @@ const Modal = () => {
       })
       closeModal()
     }
+    closeModal()
   }
-
+  console.log(isEditing)
   return (
     <div
       className={`${
@@ -113,11 +153,25 @@ const Modal = () => {
             </div>
           </form>
         </div>
-        <button className="close-modal-btn" onClick={closeModal}>
+        <button
+          className="close-modal-btn"
+          onClick={() => {
+            closeModal()
+            setIsEditing(false)
+            setPerson({
+              firstName: '',
+              lastName: '',
+              occupation: '',
+              country: '',
+              avatar: '',
+              city: '',
+            })
+          }}
+        >
           <FaTimes></FaTimes>
         </button>
         <button type="submit" className="btn" onClick={handleClick}>
-          Add Person
+          {isEditing ? 'Edit Person' : 'Add Person'}
         </button>
       </div>
     </div>
