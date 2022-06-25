@@ -1,7 +1,6 @@
 import {useGlobalContext} from '../../context'
 import {FaTimes} from 'react-icons/fa'
 import Dropdown from '../Dropdown'
-import {useEffect} from 'react'
 
 const Modal = () => {
   const {
@@ -37,9 +36,8 @@ const Modal = () => {
       person.city &&
       person.avatar &&
       person.country &&
-      isEditing
+      isEditing === true
     ) {
-      openModal()
       setPeople(
         people.map((item) => {
           if (item.id === editId) {
@@ -50,7 +48,7 @@ const Modal = () => {
           return item
         })
       )
-      setEditId('')
+      setEditId(null)
       setPerson({
         firstName: '',
         lastName: '',
@@ -61,10 +59,7 @@ const Modal = () => {
       })
       setIsEditing(false)
       closeModal()
-      console.log('hello')
-    }
-
-    if (
+    } else if (
       person.firstName &&
       person.lastName &&
       person.occupation &&
@@ -82,7 +77,6 @@ const Modal = () => {
         avatar: '',
         city: '',
       })
-      closeModal()
     }
     closeModal()
   }
