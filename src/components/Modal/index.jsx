@@ -58,7 +58,6 @@ const Modal = () => {
         city: '',
       })
       setIsEditing(false)
-      closeModal()
     } else if (
       person.firstName &&
       person.lastName &&
@@ -148,21 +147,7 @@ const Modal = () => {
             </div>
           </form>
         </div>
-        <button
-          className="close-modal-btn"
-          onClick={() => {
-            closeModal()
-            setIsEditing(false)
-            setPerson({
-              firstName: '',
-              lastName: '',
-              occupation: '',
-              country: '',
-              avatar: '',
-              city: '',
-            })
-          }}
-        >
+        <button className="close-modal-btn" onClick={() => closeModal()}>
           <FaTimes></FaTimes>
         </button>
         <button type="submit" className="btn" onClick={handleClick}>

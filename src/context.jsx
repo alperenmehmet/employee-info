@@ -25,6 +25,17 @@ const AppProvider = ({children}) => {
 
   const closeModal = () => {
     setIsModalOpen(false)
+    if (isEditing) {
+      setIsEditing(false)
+      setPerson({
+        firstName: '',
+        lastName: '',
+        occupation: '',
+        country: '',
+        avatar: '',
+        city: '',
+      })
+    }
   }
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -51,6 +62,7 @@ const AppProvider = ({children}) => {
     setPerson(editingPerson)
     setEditId(id)
     setIsEditing(true)
+    openModal()
   }
 
   useEffect(() => {
