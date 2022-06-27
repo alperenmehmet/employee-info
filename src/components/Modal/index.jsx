@@ -1,6 +1,7 @@
 import {useGlobalContext} from '../../context'
 import {FaTimes} from 'react-icons/fa'
 import Dropdown from '../Dropdown'
+import Alert from '../Alert'
 
 const Modal = () => {
   const {
@@ -15,7 +16,8 @@ const Modal = () => {
     setIsEditing,
     editId,
     setEditId,
-    openModal,
+    alert,
+    setAlert,
   } = useGlobalContext()
 
   const handleChange = (e) => {
