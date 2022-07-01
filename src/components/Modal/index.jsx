@@ -18,6 +18,8 @@ const Modal = () => {
     setEditId,
     alert,
     setAlert,
+    formErrors,
+    setFormErrors,
   } = useGlobalContext()
 
   const handleChange = (e) => {
@@ -31,6 +33,7 @@ const Modal = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
+    setFormErrors(validate(person))
     if (
       person.firstName &&
       person.lastName &&
@@ -81,6 +84,8 @@ const Modal = () => {
     }
     closeModal()
   }
+
+  const validate = (values) => {}
 
   return (
     <div

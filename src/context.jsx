@@ -20,6 +20,7 @@ const AppProvider = ({children}) => {
   const [editId, setEditId] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
   const [alert, setAlert] = useState({show: false, msg: '', type: ''})
+  const [formErrors, setFormErrors] = useState({})
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -92,6 +93,8 @@ const AppProvider = ({children}) => {
         editPerson,
         alert,
         setAlert,
+        formErrors,
+        setFormErrors,
       }}
     >
       {children}
