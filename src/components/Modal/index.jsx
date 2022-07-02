@@ -1,7 +1,7 @@
 import {useGlobalContext} from '../../context'
 import {FaTimes} from 'react-icons/fa'
 import Dropdown from '../Dropdown'
-import Alert from '../Alert'
+import {useEffect} from 'react'
 
 const Modal = () => {
   const {
@@ -16,10 +16,10 @@ const Modal = () => {
     setIsEditing,
     editId,
     setEditId,
-    alert,
-    setAlert,
     formErrors,
     setFormErrors,
+    isSubmit,
+    setIsSubmit,
   } = useGlobalContext()
 
   const handleChange = (e) => {
@@ -33,7 +33,6 @@ const Modal = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
-    setFormErrors(validate(person))
     if (
       person.firstName &&
       person.lastName &&
@@ -63,6 +62,7 @@ const Modal = () => {
         city: '',
       })
       setIsEditing(false)
+      closeModal()
     } else if (
       person.firstName &&
       person.lastName &&
@@ -81,11 +81,40 @@ const Modal = () => {
         avatar: '',
         city: '',
       })
+    } else {
+      setIsSubmit(true)
+      setFormErrors(validate(person))
     }
-    closeModal()
   }
 
-  const validate = (values) => {}
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      setFormErrors(validate(person))
+    }
+  }, [])
+
+  const validate = (values) => {
+    const errors = {}
+    if (!values.firstName) {
+      errors.firstName = 'First name is required!'
+    }
+    if (!values.lastName) {
+      errors.lastName = 'Last name is required!'
+    }
+    if (!values.occupation) {
+      errors.occupation = 'Occupation is required!'
+    }
+    if (!values.country) {
+      errors.country = 'Country is required!'
+    }
+    if (!values.city) {
+      errors.city = 'City is required!'
+    }
+    if (!values.avatar) {
+      errors.avatar = 'Photo is required!'
+    }
+    return errors
+  }
 
   return (
     <div
@@ -105,6 +134,9 @@ const Modal = () => {
                 placeholder="FIRST NAME"
                 className="input"
               />
+              <p className="error">
+                {!person.firstName ? formErrors.firstName : ''}
+              </p>
             </div>
             <div>
               <input
@@ -115,6 +147,9 @@ const Modal = () => {
                 placeholder="LAST NAME"
                 className="input"
               />
+              <p className="error">
+                {!person.lastName ? formErrors.lastName : ''}
+              </p>
             </div>
             <div>
               <input
@@ -125,6 +160,9 @@ const Modal = () => {
                 placeholder="OCCUPATION"
                 className="input"
               />
+              <p className="error">
+                {!person.occupation ? formErrors.occupation : ''}
+              </p>
             </div>
             <Dropdown
               name="country"
@@ -132,6 +170,7 @@ const Modal = () => {
               handleChange={handleChange}
               className="input"
             />
+            <p className="error">{!person.country ? formErrors.country : ''}</p>
             <div>
               <input
                 type="text"
@@ -141,6 +180,7 @@ const Modal = () => {
                 placeholder="CITY"
                 className="input"
               />
+              <p className="error">{!person.city ? formErrors.city : ''}</p>
             </div>
             <div>
               <input
@@ -151,6 +191,7 @@ const Modal = () => {
                 placeholder="AVATAR URL"
                 className="input"
               />
+              <p className="error">{!person.avatar ? formErrors.avatar : ''}</p>
             </div>
           </form>
         </div>

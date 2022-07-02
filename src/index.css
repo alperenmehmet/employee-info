@@ -175,10 +175,20 @@ img{
   width: 100%;
 }
 
-select{
+select, .select{
   padding: 0.4rem;
   margin: 0.5rem;
   width: 100%;
+}
+
+.error{
+  text-align: left;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-weight: 300;
+  color: red;
+  font-size: 13px;
+  padding: 0 0.4rem;
 }
 
 

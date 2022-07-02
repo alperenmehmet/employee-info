@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {data} from './data'
-import {getLocalStorage} from './hooks/getLocalStorage'
 
 const AppContext = React.createContext()
 
@@ -19,8 +18,9 @@ const AppProvider = ({children}) => {
   })
   const [editId, setEditId] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
-  const [alert, setAlert] = useState({show: false, msg: '', type: ''})
+
   const [formErrors, setFormErrors] = useState({})
+  const [isSubmit, setIsSubmit] = useState(false)
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -91,10 +91,10 @@ const AppProvider = ({children}) => {
         isEditing,
         setIsEditing,
         editPerson,
-        alert,
-        setAlert,
         formErrors,
         setFormErrors,
+        isSubmit,
+        setIsSubmit,
       }}
     >
       {children}
