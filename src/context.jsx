@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {data} from './data'
+import {getLocalStorage} from './hooks/getLocalStorage'
 
 const AppContext = React.createContext()
 
 const AppProvider = ({children}) => {
   const [countries, setCountries] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [people, setPeople] = useState(data)
+  const [people, setPeople] = useState(getLocalStorage())
   const [selectedCountry, setSelectedCountry] = useState('')
   const [person, setPerson] = useState({
     firstName: '',
@@ -18,7 +18,6 @@ const AppProvider = ({children}) => {
   })
   const [editId, setEditId] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
-
   const [formErrors, setFormErrors] = useState({})
   const [isSubmit, setIsSubmit] = useState(false)
 
@@ -70,7 +69,7 @@ const AppProvider = ({children}) => {
 
   useEffect(() => {
     localStorage.setItem('people', JSON.stringify(people))
-  }, [])
+  }, [people])
 
   return (
     <AppContext.Provider
