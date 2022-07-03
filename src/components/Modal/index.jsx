@@ -38,7 +38,6 @@ const Modal = () => {
       person.lastName &&
       person.occupation &&
       person.city &&
-      person.avatar &&
       person.country &&
       isEditing === true
     ) {
@@ -58,7 +57,6 @@ const Modal = () => {
         lastName: '',
         occupation: '',
         country: '',
-        avatar: '',
         city: '',
       })
       setIsEditing(false)
@@ -68,7 +66,6 @@ const Modal = () => {
       person.lastName &&
       person.occupation &&
       person.city &&
-      person.avatar &&
       person.country
     ) {
       const newPerson = {...person, id: new Date().getTime().toString()}
@@ -78,7 +75,6 @@ const Modal = () => {
         lastName: '',
         occupation: '',
         country: '',
-        avatar: '',
         city: '',
       })
     } else {
@@ -109,9 +105,6 @@ const Modal = () => {
     }
     if (!values.city) {
       errors.city = 'City is required!'
-    }
-    if (!values.avatar) {
-      errors.avatar = 'Photo is required!'
     }
     return errors
   }

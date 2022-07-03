@@ -1,5 +1,6 @@
 import {FaMapMarkerAlt, FaRegTrashAlt, FaEdit} from 'react-icons/fa'
 import {useGlobalContext} from '../../context'
+import defaultAvatar from '../../assets/avatar.png'
 
 const Person = ({
   id,
@@ -15,7 +16,7 @@ const Person = ({
   return (
     <div className="person-card">
       <div className="person-img-container">
-        <img src={avatar} alt="avatar" />
+        <img src={avatar ? avatar : defaultAvatar} alt="avatar" />
       </div>
       <div className="person-info">
         <p className="person-info-name">
